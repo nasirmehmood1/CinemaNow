@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_ticketing_app/Model/movie_lcard_model.dart';
-import 'package:flutter_movie_ticketing_app/View/booking_screen/booking_screen.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/booking_screen/booking_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/widgets/highlight_container.dart';
 import 'package:flutter_movie_ticketing_app/View/widgets/highlighted_text.dart';
 import 'dart:developer' as developer;
@@ -35,7 +35,7 @@ class MovieDetailScreen extends StatelessWidget {
 
     // Safely cast the arguments to MoviecardModel
     final MoviecardModel listOfMovieDetails = args as MoviecardModel;
-    developer.log('data given $listOfMovieDetails');
+    // developer.log('data given $listOfMovieDetails');
 
     final double height = MediaQuery.sizeOf(context).height;
     final double width = MediaQuery.sizeOf(context).width;
@@ -222,7 +222,8 @@ class MovieDetailScreen extends StatelessWidget {
               fontColour: Colors.white,
               titleText: 'Get Reservation',
               onPressed: () {
-                Navigator.pushNamed(context, BookingScreen.name);
+                Navigator.pushNamed(context, BookingScreen.name,
+                    arguments: listOfMovieDetails);
               },
             ),
           ],

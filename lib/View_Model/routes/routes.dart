@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_movie_ticketing_app/View/booking_screen/booking_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/screens/Landing_screen/landing_screen.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/booking_screen/booking_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/screens/home_screen/home_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/screens/movies_screens/movie_detail_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/screens/movies_screens/movies_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/screens/onboard_screen/on_board_page.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/payment_screen.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/ticketing_screen/ticket_screen.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/custom_slider/bloc/slider_bloc.dart';
 
 class SlideTransitionPageRoute extends PageRouteBuilder {
@@ -69,6 +71,19 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
             return const BookingScreen();
           },
           settings: RouteSettings(arguments: settings.arguments));
+    case TicketScreen.name:
+      return MaterialPageRoute(
+          builder: (context) {
+            return const TicketScreen();
+          },
+          settings: RouteSettings(arguments: settings.arguments));
+    case PaymentScreen.name:
+      return MaterialPageRoute(
+          builder: (context) {
+            return const PaymentScreen();
+          },
+          settings: RouteSettings(arguments: settings.arguments));
+
     default:
       return MaterialPageRoute(
         builder: (context) => Scaffold(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/booking_screen/booking_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/screens/home_screen/home_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/screens/movies_screens/movies_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/booking_screen/booking_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/utilities/ui_colour.dart';
 
 class LandingScreen extends StatefulWidget {

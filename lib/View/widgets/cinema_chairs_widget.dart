@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_ticketing_app/Model/booking_model.dart';
+import 'package:flutter_movie_ticketing_app/View/widgets/chair_widget.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/fade_animation.dart';
-import 'chair_widget.dart';
+import 'dart:developer' as developer;
 
 class CinemaChairsWidget extends StatefulWidget {
-  const CinemaChairsWidget({Key? key}) : super(key: key);
+  final ValueNotifier<double> totalPriceNotifier;
+
+  const CinemaChairsWidget({Key? key, required this.totalPriceNotifier})
+      : super(key: key);
 
   @override
   State<CinemaChairsWidget> createState() => _CinemaChairsWidgetState();
@@ -20,11 +25,9 @@ class _CinemaChairsWidgetState extends State<CinemaChairsWidget> {
     [1, 3, 0, 1, 0, 2, 1]
   ];
 
-  List<Map<String, int>> _selectedChairs = [];
-
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.sizeOf(context).height;
+    final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Column(
       children: <Widget>[
@@ -55,12 +58,14 @@ class _CinemaChairsWidgetState extends State<CinemaChairsWidget> {
                             setState(() {
                               if (_chairStatus[i][x - 1] == 1) {
                                 _chairStatus[i][x - 1] = 4;
-                                _selectedChairs.add({'row': i, 'col': x - 1});
+                                selectedChairs.add({'row': i, 'col': x - 1});
                               } else if (_chairStatus[i][x - 1] == 4) {
                                 _chairStatus[i][x - 1] = 1;
-                                _selectedChairs.removeWhere((chair) =>
+                                selectedChairs.removeWhere((chair) =>
                                     chair['row'] == i && chair['col'] == x - 1);
                               }
+                              widget.totalPriceNotifier.value =
+                                  _calculateTotalPrice();
                             });
                           },
                           child: Container(
@@ -82,11 +87,31 @@ class _CinemaChairsWidgetState extends State<CinemaChairsWidget> {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Total Price: \$${_calculateTotalPrice()}',
-            style: const TextStyle(
-                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
-            textAlign: TextAlign.center,
+          child: ValueListenableBuilder<double>(
+            valueListenable: widget.totalPriceNotifier,
+            builder: (context, totalPrice, child) {
+              return Column(
+                children: [
+                  Text(
+                    'Total Price: \$${totalPrice.toStringAsFixed(2)}',
+                    style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                    textAlign: TextAlign.center,
+                  ),
+                  // if (selectedChairs.isNotEmpty)
+                  //   Text(
+                  //     'Selected Chairs: ${_getSelectedChairsLocations()}',
+                  //     style: const TextStyle(
+                  //         fontSize: 16,
+                  //         fontWeight: FontWeight.bold,
+                  //         color: Colors.black),
+                  //     textAlign: TextAlign.center,
+                  //   ),
+                ],
+              );
+            },
           ),
         ),
       ],
@@ -125,9 +150,15 @@ class _CinemaChairsWidgetState extends State<CinemaChairsWidget> {
 
   double _calculateTotalPrice() {
     double total = 0.0;
-    for (var chair in _selectedChairs) {
+    for (var chair in selectedChairs) {
       total += _getTicketPrice(_chairStatus[chair['row']!][chair['col']!]);
     }
     return total;
+  }
+
+  String _getSelectedChairsLocations() {
+    return selectedChairs
+        .map((chair) => '(${chair['row']! + 1}, ${chair['col']! + 1})')
+        .join(', ');
   }
 }

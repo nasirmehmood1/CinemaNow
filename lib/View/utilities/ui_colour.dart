@@ -19,4 +19,6 @@ class UiColour {
   final Color bgOne = const Color(0xff183e4b);
   final Color bookingbg = const Color(0xffffffea);
   final Color bookingbgSecond = const Color(0xffd7f9f8);
+  final Color paymentScreenBgOne = const Color(0xfffd746a);
+  final Color paymentScreenBgSecond = const Color(0xff2c3e52);
 }

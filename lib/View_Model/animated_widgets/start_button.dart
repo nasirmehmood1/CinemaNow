@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/Landing_screen/landing_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/home_screen/home_screen.dart';
 
 class StartButton extends StatefulWidget {
   const StartButton(
@@ -8,7 +6,7 @@ class StartButton extends StatefulWidget {
       required this.backgroundColour,
       required this.titleText,
       required this.fontColour,
-      this.onPressed});
+      required this.onPressed});
   final Color backgroundColour;
   final String titleText;
   final Color fontColour;
