@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_ticketing_app/Model/booking_model.dart';
 import 'package:flutter_movie_ticketing_app/View/screens/payment_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/utilities/ui_colour.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/fade_animation.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/utilities/ui_colour.dart';
 import 'package:flutter_movie_ticketing_app/View/widgets/list_image_posters.dart';
 import 'package:flutter_movie_ticketing_app/View/widgets/location_widget.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/animated_card_swiper.dart';
@@ -83,11 +84,20 @@ class _TicketScreenState extends State<TicketScreen> {
             return Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                LocationWidget(),
-                SwiperWidget(
-                    name: details.bookedMovieName,
-                    date: formattedDate,
-                    seat: ' j :3'),
+                const FadeAnimation(
+                    delay: 3.5,
+                    fadeInDirection: FadeInDirection.ttb,
+                    fadeOffset: 40,
+                    child: LocationWidget()),
+                FadeAnimation(
+                  delay: 3.5,
+                  fadeInDirection: FadeInDirection.ltr,
+                  fadeOffset: 40,
+                  child: SwiperWidget(
+                      name: details.bookedMovieName,
+                      date: formattedDate,
+                      seat: ' j :3'),
+                ),
                 SizedBox(
                   height: height * 0.01,
                 ),

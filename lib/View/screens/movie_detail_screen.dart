@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_ticketing_app/Model/movie_lcard_model.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/booking_screen/booking_screen.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/booking_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/widgets/highlight_container.dart';
 import 'package:flutter_movie_ticketing_app/View/widgets/highlighted_text.dart';
 import 'dart:developer' as developer;
-import 'package:flutter_movie_ticketing_app/View/utilities/ui_colour.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/utilities/ui_colour.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/fade_animation.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/start_button.dart';
 import 'package:intl/intl.dart';

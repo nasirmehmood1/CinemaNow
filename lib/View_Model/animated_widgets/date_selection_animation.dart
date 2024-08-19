@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_ticketing_app/View/utilities/ui_colour.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/utilities/ui_colour.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/fade_animation.dart';
 
 // ignore: must_be_immutable

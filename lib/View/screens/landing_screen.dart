@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/booking_screen/booking_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/home_screen/home_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/movies_screens/movies_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/utilities/ui_colour.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/booking_screen.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/home_screen.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/movies_screen.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/payment_screen.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/utilities/ui_colour.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -20,7 +21,6 @@ class _LandingScreenState extends State<LandingScreen>
   static const List<Widget> _bodyView = <Widget>[
     MyHomePage(),
     MoviesScreen(),
-    BookingScreen(),
   ];
 
   @override
@@ -66,7 +66,6 @@ class _LandingScreenState extends State<LandingScreen>
   final List<Widget> _icons = const [
     Icon(Icons.home_outlined),
     Icon(Icons.explore_outlined),
-    Icon(Icons.person_2_outlined),
   ];
 
   @override

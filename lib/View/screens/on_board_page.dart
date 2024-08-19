@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/Landing_screen/landing_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/utilities/ui_colour.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/landing_screen.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/utilities/ui_colour.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/animated_cards.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/fade_animation.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/start_button.dart';

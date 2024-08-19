@@ -1,63 +1,62 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/finger_scan_animation.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/ticket_screen.dart';
 
-class FingerScanAnimationDemo extends StatefulWidget {
+class FingerprintIcon extends StatefulWidget {
   @override
-  _FingerScanAnimationDemoState createState() =>
-      _FingerScanAnimationDemoState();
+  _FingerprintIconState createState() => _FingerprintIconState();
 }
 
-class _FingerScanAnimationDemoState extends State<FingerScanAnimationDemo>
-    with TickerProviderStateMixin {
-  late AnimationController _controller;
+class _FingerprintIconState extends State<FingerprintIcon> {
+  Color _iconColor = Colors.white;
+  bool _isClicked = false;
+  bool _showCheckMark = false;
+  bool _showFingerprint = true;
 
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-        duration: const Duration(milliseconds: 750), vsync: this);
-    _controller.repeat(reverse: true);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+  void _toggleColor() {
+    setState(() {
+      _isClicked = !_isClicked;
+      _iconColor = _isClicked ? Colors.red : Colors.white;
+      if (_isClicked) {
+        Future.delayed(const Duration(seconds: 1), () {
+          setState(() {
+            _showCheckMark = true;
+            _showFingerprint = false;
+            Navigator.pop(context);
+          });
+        });
+      } else {
+        _showCheckMark = false;
+        _showFingerprint = true;
+      }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Container(
-          height: 256,
-          width: 256,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: RadialGradient(
-              stops: [0.2, 0.1, 0.5, 0.8],
-              focal: AlignmentDirectional.center,
-              colors: [
-                Color.fromRGBO(56, 6, 107, 5),
-                Color.fromRGBO(39, 7, 103, 5),
-                Color.fromRGBO(80, 5, 109, 1),
-                Color.fromRGBO(56, 6, 107, 5),
-              ],
+    return GestureDetector(
+      onTap: _toggleColor,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          AnimatedOpacity(
+            opacity: _showFingerprint ? 1.0 : 0.0,
+            duration: const Duration(milliseconds: 400),
+            child: Icon(
+              Icons.fingerprint,
+              color: _iconColor,
+              size: 100,
             ),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 16,
-                spreadRadius: 2,
-                color: Color.fromRGBO(39, 7, 103, 5),
-              )
-            ],
           ),
-          child: FingerScanAnimation(
-            controller: _controller,
+          AnimatedOpacity(
+            opacity: _showCheckMark ? 1.0 : 0.0,
+            duration: const Duration(seconds: 1),
+            child: const Icon(
+              Icons.check,
+              color: Colors.green,
+              size: 100,
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

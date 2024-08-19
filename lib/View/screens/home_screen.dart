@@ -4,12 +4,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_ticketing_app/Model/image_poster_model.dart';
 import 'package:flutter_movie_ticketing_app/Model/movie_lcard_model.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/profile_screen.dart';
 import 'package:flutter_movie_ticketing_app/View/widgets/movie_card.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/movies_screens/movie_detail_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/movies_screens/movies_screen.dart';
-import 'package:flutter_movie_ticketing_app/View/utilities/ui_colour.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/movie_detail_screen.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/movies_screen.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/utilities/ui_colour.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/brillent_animation.dart';
-import 'package:flutter_movie_ticketing_app/View_Model/custom_slider/slide_animation.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/slide_animation.dart';
 import 'package:flutter_movie_ticketing_app/View_Model/animated_widgets/fade_animation.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
@@ -60,11 +61,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 SizedBox(
                   width: width * 0.03,
                 ),
-                CircleAvatar(
-                  maxRadius: 25,
-                  backgroundColor: Colors.deepPurple.shade100,
-                  backgroundImage: const AssetImage(
-                    'assets/images/nasir.jpeg',
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, ProfileScreen.name);
+                  },
+                  child: CircleAvatar(
+                    maxRadius: 25,
+                    backgroundColor: Colors.deepPurple.shade100,
+                    backgroundImage: const AssetImage(
+                      'assets/images/nasir.jpeg',
+                    ),
                   ),
                 ),
                 SizedBox(

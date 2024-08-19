@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_movie_ticketing_app/Model/movie_lcard_model.dart';
 import 'package:flutter_movie_ticketing_app/View/widgets/movie_card.dart';
-import 'package:flutter_movie_ticketing_app/View/screens/movies_screens/movie_detail_screen.dart';
-import 'package:flutter_movie_ticketing_app/View_Model/custom_slider/bloc/slider_bloc.dart';
+import 'package:flutter_movie_ticketing_app/View/screens/movie_detail_screen.dart';
+import 'package:flutter_movie_ticketing_app/View_Model/blocs/slider_bloc/slider_bloc.dart';
 
 class SliderAnimation extends StatefulWidget {
   const SliderAnimation({super.key, required this.list});

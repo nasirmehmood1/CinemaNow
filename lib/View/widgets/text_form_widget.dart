@@ -17,7 +17,7 @@ class TextFormWidget extends StatelessWidget {
             fontSize: 11,
           ),
           decoration: InputDecoration(
-              iconColor: Colors.blueAccent,
+              iconColor: Colors.amber.shade200,
               filled: true,
               fillColor: Colors.white,
               focusColor: Colors.blueAccent,
@@ -25,7 +25,7 @@ class TextFormWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(width * 0.1),
               ),
               labelText: hint,
-              labelStyle: TextStyle(fontSize: 12),
+              labelStyle: const TextStyle(fontSize: 12),
               icon: Icon(
                 icon,
                 size: 20,
